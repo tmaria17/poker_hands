@@ -47,4 +47,12 @@ class HandTest < Minitest::Test
     assert hand.three_of_a_kind?
     refute hand_2.three_of_a_kind?
   end
+
+  def test_it_can_find_four_of_a_kind
+    hand = Hand.new(["5H", "5H", "5S", "5S", "KD"])
+    hand_2 = Hand.new(["5H", "5H", "4S", "7S", "KD"])
+
+    assert hand.four_of_a_kind?
+    refute hand_2.four_of_a_kind?
+  end
 end

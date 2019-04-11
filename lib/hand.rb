@@ -5,6 +5,10 @@ class Hand
     @card_array = card_array
   end
 
+  def four_of_a_kind?
+    values.any? { |value| values.count(value) == 4 }
+  end
+
   def three_of_a_kind?
     values.any? { |value| values.count(value) == 3 }
   end
