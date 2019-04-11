@@ -4,10 +4,14 @@ class Hand
   def initialize(card_array)
     @card_array = card_array
   end
-  
-  def two_pair?
+
+  def three_of_a_kind?
     values.any? { |value| values.count(value) == 3 }
   end
+
+  # def two_pair?
+  #   values.any? { |value| values.count(value) == 3 }
+  # end
 
   def one_pair?
     values.any? { |value| values.count(value) == 2 }
