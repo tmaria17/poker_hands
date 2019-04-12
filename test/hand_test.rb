@@ -34,8 +34,8 @@ class HandTest < Minitest::Test
     hand = Hand.new(["5H", "5H", "6S", "7S", "KD"])
     hand_2 = Hand.new(["5H", "5H", "5S", "7S", "KD"])
 
-    assert hand.one_pair?
-    refute hand_2.one_pair?
+    assert hand.one_pair
+    refute hand_2.one_pair
   end
 
   def test_it_can_find_two_pairs
