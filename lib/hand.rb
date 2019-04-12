@@ -21,7 +21,7 @@ class Hand
   end
 
   def full_house?
-    three_of_a_kind? && one_pair?
+    three_of_a_kind? && one_pair
   end
 
   def flush?
@@ -54,13 +54,23 @@ class Hand
     frequency.values.count(2) == 2
   end
 
-  def one_pair?
-    values.any? { |value| values.count(value) == 2 }
+  def one_pair
+    frequency =
+    values.inject(Hash.new(0)) do|h,v|
+        h[v] += 1; h
+    end
+    if frequency.values.count(2) == 1
+      return frequency.key(2).to_i
+    end
   end
 
   def high_card
     #need to write conversion of face cards to numerical values
-    values.max
+    values_to_i = [ ]
+    values.each do |value|
+      values_to_i.push(value.to_i)
+    end
+    values_to_i.max
   end
 
   def face_values
