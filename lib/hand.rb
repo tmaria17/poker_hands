@@ -6,9 +6,8 @@ class Hand
     @card_array = card_array
   end
 
-
   def royal_flush?
-    flush? && royal?
+    flush? && values.sort == ["10","11","12","13","14"]
   end
 
   def royal?
