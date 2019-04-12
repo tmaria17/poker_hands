@@ -1,5 +1,6 @@
 require_relative 'card'
 require 'pry'
+
 class Hand
   def initialize(card_array)
     @card_array = card_array
@@ -59,6 +60,7 @@ class Hand
   end
 
   def high_card
+    #need to write conversion of face cards to numerical values
     values.max
   end
 
