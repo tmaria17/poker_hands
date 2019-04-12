@@ -6,9 +6,8 @@ class Hand
     @card_array = card_array
   end
 
-
   def royal_flush?
-    flush? && royal?
+    flush? && values.sort == ["10","11","12","13","14"]
   end
 
   def royal?
@@ -68,6 +67,16 @@ class Hand
     ["T","J", "Q", "K", "A"]
   end
 
+  def face_value_conversion
+    {
+      "T": "10",
+      "J": "11",
+      "Q": "12",
+      "K": "13",
+      "A": "14"
+    }
+  end
+
   def suites
     suit_array = [ ]
     cards.each do |card|
@@ -79,7 +88,11 @@ class Hand
   def values
     value_array = [ ]
     cards.each do |card|
+      if face_values.include?(card.value)
+        value_array.push(face_value_conversion[card.value.to_sym])
+      else
       value_array.push(card.value)
+      end
     end
     return value_array
   end

@@ -20,8 +20,8 @@ class HandTest < Minitest::Test
 
   def test_it_has_values
     hand = Hand.new(["5H", "5H", "6S", "7S", "KD"])
-
-    assert_equal ["5", "5", "6", "7", "K"], hand.values
+    #The value of king has been converted to 13
+    assert_equal ["5", "5", "6", "7", "13"], hand.values
   end
 
   def test_it_has_suits
@@ -97,8 +97,14 @@ class HandTest < Minitest::Test
   def test_it_can_find_a_royal_flush
     hand = Hand.new(["JH", "TH", "QH", "AH", "KH"])
     hand_2 = Hand.new(["5S", "6S", "7S", "9S", "KS"])
-    
+
     assert hand.royal_flush?
     refute hand_2.royal_flush?
+  end
+
+  def test_it_converts_face_values_to_numerical_values
+    hand = Hand.new(["JH", "TD", "QC", "AH", "KS"])
+
+    assert_equal ["11", "10", "12", "14", "13"], hand.values
   end
 end
