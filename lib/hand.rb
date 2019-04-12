@@ -5,6 +5,15 @@ class Hand
     @card_array = card_array
   end
 
+  def straight?
+    values_int = values.map do |v|
+                  v.to_i
+                end
+    values_int.sort.each_cons(2).all? do |first_card, next_card|
+       next_card == first_card + 1
+    end
+  end
+
   def four_of_a_kind?
     values.any? { |value| values.count(value) == 4 }
   end
@@ -23,6 +32,10 @@ class Hand
 
   def one_pair?
     values.any? { |value| values.count(value) == 2 }
+  end
+
+  def high_card
+    values.max
   end
 
   def suites

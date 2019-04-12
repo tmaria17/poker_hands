@@ -61,4 +61,12 @@ class HandTest < Minitest::Test
     assert hand.four_of_a_kind?
     refute hand_2.four_of_a_kind?
   end
+
+  def test_it_can_find_a_straight
+    hand = Hand.new(["5H", "6H", "7S", "8S", "9D"])
+    hand_2 = Hand.new(["5H", "6H", "7S", "9S", "KD"])
+
+    assert hand.straight?
+    refute hand_2.straight?
+  end
 end
