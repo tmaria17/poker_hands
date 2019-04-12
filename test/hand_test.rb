@@ -77,4 +77,12 @@ class HandTest < Minitest::Test
     assert hand.flush?
     refute hand_2.flush?
   end
+
+  def test_it_can_find_a_full_house
+    hand = Hand.new(["5H", "5H", "5H", "8H", "8H"])
+    hand_2 = Hand.new(["5H", "6H", "7S", "9S", "KD"])
+
+    assert hand.full_house?
+    refute hand_2.full_house?
+  end
 end
