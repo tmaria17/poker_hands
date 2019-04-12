@@ -21,4 +21,9 @@ class RoundTest < Minitest::Test
     round = Round.new(["1C", "2C", "3C", "4C", "5C", "6C", "5C", "4C", "3C", "2C"])
     assert_equal round.player_2, round.winning_hand
   end
+
+  def test_it_returns_a_winning_hand_in_case_of_one_pair_tie
+    round = Round.new(["1C", "1H", "3D", "4S", "5C", "6H", "6C", "4H", "1C", "7C"])
+    assert_equal round.player_2, round.winning_hand
+  end
 end

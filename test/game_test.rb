@@ -16,7 +16,7 @@ class GameTest < Minitest::Test
     assert_equal 0, game.player_1_score
   end
 
-  def test_it_can_read_file
+  def test_it_can_read_file_and_play_game
     game = Game.new
     game.play_poker("/Users/maria.torres/turing/5module/take_home_challenges/poker_hands/data/poker.txt")
     assert_equal 376, game.player_1_score
