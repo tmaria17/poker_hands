@@ -5,10 +5,14 @@ class Hand
     @card_array = card_array
   end
 
+  def straight_flush?
+    straight? && flush?
+  end
+  
   def full_house?
     three_of_a_kind? && one_pair?
   end
-  
+
   def flush?
     suites.uniq.length == 1
   end
