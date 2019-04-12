@@ -20,7 +20,7 @@ class HandTest < Minitest::Test
 
   def test_it_has_values
     hand = Hand.new(["5H", "5H", "6S", "7S", "KD"])
-    #The value of king has been converted to 13
+    
     assert_equal ["5", "5", "6", "7", "13"], hand.values
   end
 

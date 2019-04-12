@@ -29,7 +29,6 @@ class Hand
   end
 
   def straight?
-    #need to write conversion of face cards to numerical values
     values_int = values.map do |v|
                   v.to_i
                 end
@@ -65,7 +64,6 @@ class Hand
   end
 
   def high_card
-    #need to write conversion of face cards to numerical values
     values_to_i = [ ]
     values.each do |value|
       values_to_i.push(value.to_i)
