@@ -5,10 +5,21 @@ class Hand
     @card_array = card_array
   end
 
+
+  def royal_flush?
+    flush? && royal?
+  end
+
+  def royal?
+    face_values.all? do |f_value|
+      values.include?(f_value)
+    end
+  end
+
   def straight_flush?
     straight? && flush?
   end
-  
+
   def full_house?
     three_of_a_kind? && one_pair?
   end
@@ -18,6 +29,7 @@ class Hand
   end
 
   def straight?
+    #need to write conversion of face cards to numerical values
     values_int = values.map do |v|
                   v.to_i
                 end
@@ -48,6 +60,10 @@ class Hand
 
   def high_card
     values.max
+  end
+
+  def face_values
+    ["T","J", "Q", "K", "A"]
   end
 
   def suites
