@@ -101,4 +101,10 @@ class HandTest < Minitest::Test
     assert hand.royal_flush?
     refute hand_2.royal_flush?
   end
+
+  def test_it_converts_face_values_to_numerical_values
+    hand = Hand.new(["JH", "TD", "QC", "AH", "KS"])
+
+    assert_equal ["11", "10", "12", "14", "13"], hand.values
+  end
 end
