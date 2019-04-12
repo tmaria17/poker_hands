@@ -26,8 +26,9 @@ See my planning board [here](https://github.com/tmaria17/poker_hands/projects/1)
 
 ## Dependecies
   This project assumes you have installed:
-    * Ruby 2.4.1
-    * Minitest
+ 
+   * Ruby 2.4.1
+   * Minitest
 
 ## Testing
   1. To test the Game:
