@@ -8,12 +8,12 @@ class Round
     @player_2 = Hand.new(card_array[5..9])
   end
 
-  def winner
+  def winning_hand
     if @player_1.royal_flush?
       @player_1
     elsif @player_2.royal_flush?
       @player_2
-    elsif @player_1.straight_flush? && @player_1.straight_flush?
+    elsif @player_1.straight_flush? && @player_2.straight_flush?
       tie
     elsif @player_1.straight_flush?
       @player_1
@@ -55,11 +55,21 @@ class Round
       @player_1
     elsif @player_2.two_pair?
       @player_2
-    elsif @player_1.one_pair? && @player_2.one_pair?
-      tie
-    elsif @player_1.one_pair?
+    elsif @player_1.one_pair && @player_2.one_pair
+      one_pair_tie
+    elsif @player_1.one_pair
       @player_1
-    elsif @player_2.one_pair?
+    elsif @player_2.one_pair
+      @player_2
+    else
+      tie
+    end
+  end
+
+  def one_pair_tie
+    if @player_1.one_pair > @player_2.one_pair
+      @player_1
+    elsif @player_2.one_pair > @player_1.one_pair
       @player_2
     else
       tie
@@ -74,14 +84,14 @@ class Round
     elsif @player_1.high_card == @player_2.high_card
         @player_1.values.delete(@player_1.high_card)
         @player_2.values.delete(@player_2.high_card)
-          tie_breaker_again
+        tie_breaker_again
     end
   end
 
   def tie_breaker_again
-    if @player_1.values.max > @player_2.vales.max
+    if @player_1.values.max > @player_2.values.max
       @player_1
-    elsif @player_2.values.max > @player_1.vales.max
+    elsif @player_2.values.max > @player_1.values.max
       @player_2
     end
   end
