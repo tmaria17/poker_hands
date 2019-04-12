@@ -20,7 +20,7 @@ class HandTest < Minitest::Test
 
   def test_it_has_values
     hand = Hand.new(["5H", "5H", "6S", "7S", "KD"])
-    
+
     assert_equal ["5", "5", "6", "7", "13"], hand.values
   end
 
@@ -106,5 +106,11 @@ class HandTest < Minitest::Test
     hand = Hand.new(["JH", "TD", "QC", "AH", "KS"])
 
     assert_equal ["11", "10", "12", "14", "13"], hand.values
+  end
+
+  def test_it_can_find_the_highed_value
+    hand = Hand.new(["JH", "TD", "QC", "AH", "KS"])
+
+    assert_equal 14, hand.high_card
   end
 end
