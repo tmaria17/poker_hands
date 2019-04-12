@@ -34,7 +34,7 @@ class HandTest < Minitest::Test
     hand = Hand.new(["5H", "5H", "6S", "7S", "KD"])
     hand_2 = Hand.new(["5H", "5H", "5S", "7S", "KD"])
 
-    assert hand.one_pair
+    assert_equal 5, hand.one_pair
     refute hand_2.one_pair
   end
 
