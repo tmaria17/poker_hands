@@ -69,4 +69,12 @@ class HandTest < Minitest::Test
     assert hand.straight?
     refute hand_2.straight?
   end
+
+  def test_it_can_find_a_flush
+    hand = Hand.new(["5H", "6H", "7H", "8H", "9H"])
+    hand_2 = Hand.new(["5H", "6H", "7S", "9S", "KD"])
+
+    assert hand.flush?
+    refute hand_2.flush?
+  end
 end

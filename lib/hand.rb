@@ -5,6 +5,10 @@ class Hand
     @card_array = card_array
   end
 
+  def flush?
+    suites.uniq.length == 1
+  end
+
   def straight?
     values_int = values.map do |v|
                   v.to_i
