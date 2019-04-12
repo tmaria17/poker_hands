@@ -13,9 +13,13 @@ class Hand
     values.any? { |value| values.count(value) == 3 }
   end
 
-  # def two_pair?
-  #   values.any? { |value| values.count(value) == 3 }
-  # end
+  def two_pair?
+    frequency =
+    values.inject(Hash.new(0)) do|h,v|
+        h[v] += 1; h
+    end
+    frequency.values.count(2) == 2
+  end
 
   def one_pair?
     values.any? { |value| values.count(value) == 2 }

@@ -30,14 +30,20 @@ class HandTest < Minitest::Test
     assert_equal ["H", "H", "S", "S", "D"], hand.suites
   end
 
-  def test_if_a_hand_has_one_pair
+  def test_it_can_find_one_pair
     hand = Hand.new(["5H", "5H", "6S", "7S", "KD"])
+    hand_2 = Hand.new(["5H", "5H", "5S", "7S", "KD"])
+
     assert hand.one_pair?
+    refute hand_2.one_pair?
   end
 
-  def test_it_does_not_count_two_pair_as_one
-    hand = Hand.new(["5H", "5H", "5S", "7S", "KD"])
-    refute hand.one_pair?
+  def test_it_can_find_two_pairs
+    hand = Hand.new(["5H", "5H", "6S", "KS", "KD"])
+    hand_2 = Hand.new(["5H", "5H", "KS", "KS", "KD"])
+
+    assert hand.two_pair?
+    refute hand_2.two_pair?
   end
 
   def test_it_can_find_three_of_a_kind
